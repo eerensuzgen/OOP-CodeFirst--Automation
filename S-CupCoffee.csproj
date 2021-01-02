@@ -56,7 +56,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cart.cs" />
+    <Compile Include="ExceptionHandling.cs" />
+    <Compile Include="Order.cs" />
     <Compile Include="Cash.cs" />
     <Compile Include="CreditCard.cs" />
     <Compile Include="Entity\Admin.cs" />
@@ -84,6 +85,8 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NoSale.cs" />
     <Compile Include="Pay.cs" />
+    <Compile Include="Personel.cs" />
+    <Compile Include="PersonelList.cs" />
     <Compile Include="PersonelSale.cs" />
     <Compile Include="ProcessesForm.cs">
       <SubType>Form</SubType>
@@ -130,9 +133,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="icon-image\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

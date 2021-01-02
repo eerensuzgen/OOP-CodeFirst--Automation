@@ -15,9 +15,9 @@ namespace S_CupCoffee.Entity
 
         public DbSet<Category> Categories { get; set; }
 
-        //public DbSet<Cart> Carts { get; set; }
+        public DbSet<Cart> Carts { get; set; }
 
-        //public DbSet<Table> Tables { get; set; }
+        public DbSet<Table> Tables { get; set; }
 
 
     }

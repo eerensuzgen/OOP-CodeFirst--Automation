@@ -18,6 +18,6 @@ namespace S_CupCoffee.Entity
 
         public Table Table { get; set; }
 
-        public virtual ICollection<Product> Products { get; set; }
+        public ICollection<Product> Products { get; set; }
     }
 }

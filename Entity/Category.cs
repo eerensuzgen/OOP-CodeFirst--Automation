@@ -14,6 +14,6 @@ namespace S_CupCoffee.Entity
 
         public string categoryName { get; set; }
 
-        //public virtual ICollection<Product> Products { get; set; }
+        public ICollection<Product> Products { get; set; }
     }
 }

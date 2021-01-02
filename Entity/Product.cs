@@ -12,10 +12,12 @@ namespace S_CupCoffee.Entity
         [Key]
         public int productID { get; set; }
 
+        public int categoryID { get; set; }
+
         public string productName { get; set; }
 
         public double unitPrice { get; set; }
 
-        //public Category Category { get; set; }
+        public Category Category { get; set; }
     }
 }

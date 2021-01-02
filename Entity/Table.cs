@@ -12,6 +12,8 @@ namespace S_CupCoffee.Entity
         [Key]
         public int tableID { get; set; }
 
-        public virtual ICollection<Product> Products { get; set; }
+        public DateTime date { get; set; }
+
+        public ICollection<Cart> Carts { get; set; }
     }
 }

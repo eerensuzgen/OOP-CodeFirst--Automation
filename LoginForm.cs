@@ -28,31 +28,38 @@ namespace S_CupCoffee
         {
             try
             {
-                SqlConnection scon = new SqlConnection("Server=localhost\\SQLEXPRESS;Database=dbSCupCoffee;Trusted_Connection=True");
-                scon.Open();
-                string scom = "SELECT * From Admins where(userName=@username and password=@pass)";
-                SqlCommand cmd = new SqlCommand(scom, scon);
-                cmd.Parameters.AddWithValue("@username", txtUserName.Text);
-                cmd.Parameters.AddWithValue("@pass", txtPassword.Text);
-                SqlDataReader sdr = cmd.ExecuteReader();
-                if (sdr.Read())
+                if(txtUserName.Text == "" && txtPassword.Text == "")
                 {
-                    MainForm mainFrm = new MainForm();
-                    mainFrm.ShowDialog();
+                    MessageBox.Show("Kullanıcı Adı ve Şifre alanları boş olamaz");
                 }
-                else MessageBox.Show("Giriş Bilgilerinizi Kontrol Ediniz");
-                scon.Close();
-                
+                else
+                {
+                    SqlConnection scon = new SqlConnection("Server=localhost\\SQLEXPRESS;Database=dbSCupCoffee;Trusted_Connection=True");
+                    scon.Open();
+                    string scom = "SELECT * From Admins where(userName=@username and password=@pass)";
+                    SqlCommand cmd = new SqlCommand(scom, scon);
+                    cmd.Parameters.AddWithValue("@username", txtUserName.Text);
+                    cmd.Parameters.AddWithValue("@pass", txtPassword.Text);
+                    SqlDataReader sdr = cmd.ExecuteReader();
+                    if (sdr.Read())
+                    {
+                        MainForm mainFrm = new MainForm();
+                        mainFrm.ShowDialog();
+                        this.Close();                       
+                    }
+                    else MessageBox.Show("Giriş Bilgilerinizi Kontrol Ediniz");
+                    scon.Close();
+                }                               
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Giriş Bilgilerinizi Kontrol Ediniz " + ex);
+                MessageBox.Show("Giriş Bilgilerinizi Kontrol Ediniz " + ex.Message);
             }
         }
 
         private void btnLogin_Click_1(object sender, EventArgs e)
         {
-            login();
+            login();           
         }
     }
 }
