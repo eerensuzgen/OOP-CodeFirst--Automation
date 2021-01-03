@@ -1,3 +1,5 @@
-Müşteri Borcunu ödemedi. Borcu alınacak
+Müşteri Borcunu ödemedi. Borcu alınacak.
+
+
 
 

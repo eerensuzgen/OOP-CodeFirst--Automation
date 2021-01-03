@@ -174,11 +174,12 @@ namespace S_CupCoffee
 
         public static int btnWasClicked;
         public static string[] clock = new string[12];
-        DateTime stLogin = DateTime.Now;
+        
 
         private void btn1_Click(object sender, EventArgs e)
         {
             ProcessesForm processes = new ProcessesForm();
+            DateTime stLogin = DateTime.Now;
             btnWasClicked = 1;
             if (clock[0] == null || clock[0] == "bos")// saat var ise sıfırlamasın diye
             {
@@ -189,6 +190,7 @@ namespace S_CupCoffee
         private void btn2_Click(object sender, EventArgs e)
         {
             ProcessesForm processes = new ProcessesForm();
+            DateTime stLogin = DateTime.Now;
             btnWasClicked = 2;
             if (clock[1] == null || clock[1] == "bos")
             {
@@ -200,6 +202,7 @@ namespace S_CupCoffee
         private void btn3_Click(object sender, EventArgs e)
         {
             ProcessesForm processes = new ProcessesForm();
+            DateTime stLogin = DateTime.Now;
             btnWasClicked = 3;
             if (clock[2] == null || clock[2] == "bos")
             {
@@ -211,6 +214,7 @@ namespace S_CupCoffee
         private void btn4_Click(object sender, EventArgs e)
         {
             ProcessesForm processes = new ProcessesForm();
+            DateTime stLogin = DateTime.Now;
             btnWasClicked = 4;
             if (clock[3] == null || clock[3] == "bos")
             {
@@ -222,6 +226,7 @@ namespace S_CupCoffee
         private void btn5_Click(object sender, EventArgs e)
         {
             ProcessesForm processes = new ProcessesForm();
+            DateTime stLogin = DateTime.Now;
             btnWasClicked = 5;
             if (clock[4] == null || clock[4] == "bos")
             {
@@ -233,6 +238,7 @@ namespace S_CupCoffee
         private void btn6_Click(object sender, EventArgs e)
         {
             ProcessesForm processes = new ProcessesForm();
+            DateTime stLogin = DateTime.Now;
             btnWasClicked = 6;
             if (clock[5] == null || clock[5] == "bos")
             {
@@ -244,6 +250,7 @@ namespace S_CupCoffee
         private void btn7_Click(object sender, EventArgs e)
         {
             ProcessesForm processes = new ProcessesForm();
+            DateTime stLogin = DateTime.Now;
             btnWasClicked = 7;
             if (clock[6] == null || clock[6] == "bos")
             {
@@ -255,6 +262,7 @@ namespace S_CupCoffee
         private void btn8_Click(object sender, EventArgs e)
         {
             ProcessesForm processes = new ProcessesForm();
+            DateTime stLogin = DateTime.Now;
             btnWasClicked = 8;
             if (clock[7] == null || clock[7] == "bos")
             {
@@ -266,6 +274,7 @@ namespace S_CupCoffee
         private void btn9_Click(object sender, EventArgs e)
         {
             ProcessesForm processes = new ProcessesForm();
+            DateTime stLogin = DateTime.Now;
             btnWasClicked = 9;
             if (clock[8] == null || clock[8] == "bos")
             {
@@ -277,6 +286,7 @@ namespace S_CupCoffee
         private void btn10_Click(object sender, EventArgs e)
         {
             ProcessesForm processes = new ProcessesForm();
+            DateTime stLogin = DateTime.Now;
             btnWasClicked = 10;
             if (clock[9] == null || clock[9] == "bos")
             {
@@ -288,6 +298,7 @@ namespace S_CupCoffee
         private void btn11_Click(object sender, EventArgs e)
         {
             ProcessesForm processes = new ProcessesForm();
+            DateTime stLogin = DateTime.Now;
             btnWasClicked = 11;
             if (clock[10] == null || clock[10] == "bos")
             {
@@ -299,6 +310,7 @@ namespace S_CupCoffee
         private void btn12_Click(object sender, EventArgs e)
         {
             ProcessesForm processes = new ProcessesForm();
+            DateTime stLogin = DateTime.Now;
             btnWasClicked = 12;
             if (clock[11] == null || clock[11] == "bos")
             {
@@ -320,7 +332,7 @@ namespace S_CupCoffee
             try
             {
 
-                for (int i = 0; i < 20; i++) //masaları kontrol etmek için
+                for (int i = 0; i < 12; i++) //masaları kontrol etmek için
                 {
                     if (clock[i] == null || clock[i] == "bos") // tekrar tekrar kontrol için
                     {
