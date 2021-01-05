@@ -22,7 +22,18 @@ namespace S_CupCoffee
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            Button b = new Button
+            {
+                Text = "Giriş",
+                Size = new Size(65, 42),
+                Location = new Point(165, 250),
+                BackColor = Color.Gray,
+                ForeColor = Color.Black,
+                BackgroundImageLayout = ImageLayout.Tile
+            };
+            this.Controls.Add(b);
+            b.Click += new EventHandler(b_click);
+
         }
         public void login()
         {
@@ -56,10 +67,11 @@ namespace S_CupCoffee
                 MessageBox.Show("Giriş Bilgilerinizi Kontrol Ediniz " + ex.Message);
             }
         }
-
-        private void btnLogin_Click_1(object sender, EventArgs e)
+        private void b_click(object senders, EventArgs e)
         {
-            login();           
+            login();
         }
+       
+ 
     }
 }

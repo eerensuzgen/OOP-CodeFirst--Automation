@@ -12,6 +12,7 @@ using System.IO;
 
 namespace S_CupCoffee
 {
+    public delegate void tryDelegate(Personel per);
     public partial class MainForm : Form
     {
         Entity.Context dbcontext = new Entity.Context();
@@ -62,33 +63,49 @@ namespace S_CupCoffee
 
         public void ReadNotes()
         {
-            string filePath = @"C:\Users\Eren\source\repos\S-CupCoffee\Notlar.txt";
-            FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
-            using (StreamReader sr = new StreamReader(fs))
+            try
             {
-                while (true)
+                string filePath = @"C:\Users\Eren\source\repos\S-CupCoffee\Notlar.txt";
+                FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+                using (StreamReader sr = new StreamReader(fs))
                 {
-                    string row = sr.ReadLine();
-                    richTextBox1.Text += row + "\n";
-                    if (row == null) break;
+                    while (true)
+                    {
+                        string row = sr.ReadLine();
+                        richTextBox1.Text += row + "\n";
+                        if (row == null) break;
+                    }
+                    sr.Close();
                 }
-                sr.Close();
+                fs.Close();
             }
-            fs.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex);
+            }
+            
         }
 
         public void WriteNotes()
         {
-            string filePath = @"C:\Users\Eren\source\repos\S-CupCoffee\Notlar.txt";
-            File.WriteAllText(filePath, string.Empty);
-            FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write);
-            using (StreamWriter sw = new StreamWriter(fs))
+            try
             {
-                sw.WriteLine(richTextBox1.Text);
-                sw.Close();
+                string filePath = @"C:\Users\Eren\source\repos\S-CupCoffee\Notlar.txt";
+                File.WriteAllText(filePath, string.Empty);
+                FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write);
+                using (StreamWriter sw = new StreamWriter(fs))
+                {
+                    sw.WriteLine(richTextBox1.Text);
+                    sw.Close();
+                }
+                fs.Close();
+                MessageBox.Show("Kayıt Yapıldı");
             }
-            fs.Close();
-            MessageBox.Show("Kayıt Yapıldı");
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Hata: " + ex);
+            }
 
         }
 
@@ -173,6 +190,7 @@ namespace S_CupCoffee
         }
 
         public static int btnWasClicked;
+
         public static string[] clock = new string[12];
         
 
@@ -479,13 +497,16 @@ namespace S_CupCoffee
                     if (rdBtnManager.Checked)
                     {
                         Manager p = new Manager(txtPersonelName.Text, txtPersonelSurname.Text, int.Parse(txtPersonelAge.Text), int.Parse(txtWorkTime.Text), Convert.ToDecimal(txtSalary.Text), Convert.ToDecimal(txtBonus.Text));
-                        personel.addPersonel(p);
+                        tryDelegate d = new tryDelegate(personel.addPersonel);
+                        d.Invoke(p);
+                        //personel.addPersonel(p);
                         updateList();
                     }
                     else if (rdBtnWorker.Checked)
                     {
                         Worker p = new Worker(txtPersonelName.Text, txtPersonelSurname.Text, int.Parse(txtPersonelAge.Text), int.Parse(txtWorkTime.Text), Convert.ToDecimal(txtSalary.Text), Convert.ToDecimal(txtBonus.Text));
-                        personel.addPersonel(p);
+                        tryDelegate d = new tryDelegate(personel.addPersonel);
+                        d.Invoke(p);
                         updateList();
                     }
                 }

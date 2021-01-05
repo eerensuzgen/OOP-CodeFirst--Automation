@@ -57,7 +57,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExceptionHandling.cs" />
-    <Compile Include="Order.cs" />
     <Compile Include="Cash.cs" />
     <Compile Include="CreditCard.cs" />
     <Compile Include="Entity\Admin.cs" />
@@ -96,7 +95,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sale.cs" />
+    <Compile Include="ISale.cs" />
     <Compile Include="StudentSale.cs" />
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

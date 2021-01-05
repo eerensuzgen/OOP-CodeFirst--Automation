@@ -37,70 +37,99 @@ namespace S_CupCoffee
         SqlConnection conn = new SqlConnection("Data Source=localhost\\SQLEXPRESS;Initial Catalog=dbSCupCoffee;Integrated Security=True;Pooling=False");
         private void showProducts()
         {
-            listView1.Items.Clear();
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("select *from Products", conn);
-            SqlDataReader dr = cmd.ExecuteReader();
-            while (dr.Read())
+            try
             {
-                ListViewItem add = new ListViewItem();
-                add.Text = dr["productID"].ToString();
-                add.SubItems.Add(dr["productName"].ToString());
-                add.SubItems.Add((dr["unitPrice"].ToString()));//+ " ₺"
+                listView1.Items.Clear();
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("select *from Products", conn);
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    ListViewItem add = new ListViewItem();
+                    add.Text = dr["productID"].ToString();
+                    add.SubItems.Add(dr["productName"].ToString());
+                    add.SubItems.Add((dr["unitPrice"].ToString()));
 
 
-                listView1.Items.Add(add);
+                    listView1.Items.Add(add);
+                }
+                conn.Close();
             }
-            conn.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex);
+            }
+            
         }
 
         private void ShowCarts()
         {
-            listView2.Items.Clear();
-            conn.Open();
-            string sorgu = "Select Carts.cartID,Products.productName,Products.unitPrice,Tables.tableID From Carts INNER JOIN Products ON Carts.productID = Products.productID INNER JOIN Tables ON Tables.tableID = Carts.tableID";
-            SqlCommand cmd = new SqlCommand(sorgu, conn);
-            SqlDataReader dr = cmd.ExecuteReader();
-            while (dr.Read())
+            try
             {
-                if (dr["tableID"].ToString() == MainForm.btnWasClicked.ToString())
+                listView2.Items.Clear();
+                conn.Open();
+                string sorgu = "Select Carts.cartID,Products.productName,Products.unitPrice,Tables.tableID From Carts INNER JOIN Products ON Carts.productID = Products.productID INNER JOIN Tables ON Tables.tableID = Carts.tableID";
+                SqlCommand cmd = new SqlCommand(sorgu, conn);
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
                 {
-                    ListViewItem add = new ListViewItem();
-                    add.Text = dr["cartID"].ToString();
-                    add.SubItems.Add(dr["productName"].ToString());
-                    add.SubItems.Add(dr["unitPrice"].ToString());
+                    if (dr["tableID"].ToString() == MainForm.btnWasClicked.ToString())
+                    {
+                        ListViewItem add = new ListViewItem();
+                        add.Text = dr["cartID"].ToString();
+                        add.SubItems.Add(dr["productName"].ToString());
+                        add.SubItems.Add(dr["unitPrice"].ToString());
 
 
-                    listView2.Items.Add(add);
+                        listView2.Items.Add(add);
+                    }
                 }
+                conn.Close();
             }
-            conn.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex);
+            }
         }
 
         public void clearCartList()
         {
-            var order = dbcontext.Carts.Where(x => x.tableID == MainForm.btnWasClicked).ToList();
-            dbcontext.Carts.RemoveRange(order);
-            dbcontext.SaveChanges();
-            lblTotalPrice.Text = "0";
-            lblPayPrice.Text = "0";
-            ShowCarts();
+            try
+            {
+                var order = dbcontext.Carts.Where(x => x.tableID == MainForm.btnWasClicked).ToList();
+                dbcontext.Carts.RemoveRange(order);
+                dbcontext.SaveChanges();
+                lblTotalPrice.Text = "0";
+                lblPayPrice.Text = "0";
+                ShowCarts();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex);
+            }
         }
         public void writeTotalPrice()
         {
-            var order = dbcontext.Carts.Where(x => x.tableID == MainForm.btnWasClicked).ToList();
-            if (order.Count == 0) lblTotalPrice.Text = "0";
-            else
+            try
             {
-                foreach (var item in order)
+                var order = dbcontext.Carts.Where(x => x.tableID == MainForm.btnWasClicked).ToList();
+                if (order.Count == 0) lblTotalPrice.Text = "0";
+                else
                 {
-                    int c = item.productID;
-                    var b = dbcontext.Products.FirstOrDefault(y => y.productID == c);
-                    a += b.unitPrice;
-                    lblTotalPrice.Text = a.ToString();
+                    foreach (var item in order)
+                    {
+                        int c = item.productID;
+                        var b = dbcontext.Products.FirstOrDefault(y => y.productID == c);
+                        a += b.unitPrice;
+                        lblTotalPrice.Text = a.ToString();
+                    }
                 }
-            }            
-            a = 0;
+                a = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata: " + ex);
+            }
 
         }
         

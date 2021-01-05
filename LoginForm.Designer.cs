@@ -33,7 +33,6 @@ namespace S_CupCoffee
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.btnLogin = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -74,17 +73,6 @@ namespace S_CupCoffee
             this.txtPassword.Size = new System.Drawing.Size(200, 22);
             this.txtPassword.TabIndex = 5;
             // 
-            // btnLogin
-            // 
-            this.btnLogin.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(230, 312);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(72, 42);
-            this.btnLogin.TabIndex = 6;
-            this.btnLogin.Text = "Giriş";
-            this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click_1);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -103,7 +91,6 @@ namespace S_CupCoffee
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(482, 453);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.lblPassword);
@@ -122,7 +109,6 @@ namespace S_CupCoffee
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label label1;
     }
 }
